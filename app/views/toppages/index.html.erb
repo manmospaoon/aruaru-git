@@ -1,1 +1,15 @@
-<h1>Toppage</h1>
+<h5 class = 'border-bottom mb-5'>新着お題</h5>
+<ul class="list-unstyled">
+  <% @themes.each do |theme| %>
+    <li class="media mb-3 pr-3">
+      <div class="bg-dark">
+        <p class="text-white"><%= theme.content %></p>
+      </div>
+      <div>
+        <p><%= link_to theme.user.name, user_path(theme.user) %> </p>
+      </div>
+      
+    </li>
+  <% end %>
+  <%= paginate @themes %>
+</ul>
