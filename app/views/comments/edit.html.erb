@@ -1,0 +1,21 @@
+<% if logged_in? %>
+  <h3>あるある編集</h3>
+  <%= form_with(model: @comment, local: true) do |f| %>
+        
+    <% if @comment.errors.any? %>
+     <div id="error_explanation">
+       <ul>
+         <% @comment.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+       
+    <%#= hidden_field_tag :theme_id, @theme.id %>
+      <div class="form-group col-md-8">
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+    <%= f.submit '投稿する', class: 'btn btn-primary btn-block col-md-8' %>
+   <% end %>
+ <% end %>  

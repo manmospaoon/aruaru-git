@@ -1,0 +1,19 @@
+#new-aruaru {
+  a {
+    color: #f8f9fa;
+  }
+  
+  a:hover {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+#new-aruaru .pagination a {
+    color: #000;
+}
+
+#new-aruaru .pagination {
+    justify-content: center;
+}

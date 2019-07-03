@@ -1,7 +1,12 @@
 class ThemesController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only:[:new, :create, :destroy]
   before_action :correct_user, only: [:destroy]
   
+  def show
+    @theme = Theme.find(params[:id])
+    @comments = @theme.comments.order(id: :desc).page(params[:page]).per(4)
+    @comment = @theme.comments.build
+  end
   
   def new
     @theme = Theme.new
@@ -9,11 +14,11 @@ class ThemesController < ApplicationController
   
   def create
     @theme = current_user.themes.build(theme_params)
+    @themes = current_user.themes.order(id: :desc).page(params[:page])
     if @theme.save
       flash[:success] = 'メッセージを投稿しました。'
       redirect_to root_url
     else
-      @themes = current_user.themes.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render 'themes/new'
     end

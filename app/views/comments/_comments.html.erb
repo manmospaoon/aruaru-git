@@ -1,0 +1,21 @@
+<div id="new-aruaru">
+  <div class="row">  
+  <% comments.each do |comment| %>
+      <div class = "col-md-5 col-sm-6 offset-md-1">
+        <a class="d-block bg-dark d-flex align-items-center justify-content-center"style = "height: 200px"
+          <%= link_to comment.theme.content,  theme_url(comment.theme) %>
+        
+        <div class = "text-center mb-4 mt-4">
+          <h6><%= comment.content %></h6>
+        </div>
+        <% if current_user == comment.user %>
+        <div class = "text-right mb-5 mt-4">
+         <%= link_to "編集", edit_comment_path(comment),  class: 'btn btn-success btn-sm' %> 
+         <%= link_to "削除", comment, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        </div>
+        <% end %>
+      </div>
+  <% end %>
+  </div>
+  <%= paginate @comments %>
+</div> 

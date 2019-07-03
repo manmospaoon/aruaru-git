@@ -1,19 +1,22 @@
 <div class="row">
-  <aside class="col-sm-3">
-    <div class="card">
+  <aside>
+    <div class = " col-md-12" >
+    <div class="card border-info mb-3 ">
       <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
+        <h5 class="card-title"><%= @user.name %></h5>
       </div>
       <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 200 }) %>" alt="">
+        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 120 }) %>" alt="">
       </div>
     </div>
+    </div>
   </aside>
-  <div class="col-sm-8">
+  <div class="col-md-8">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿したあるある <span class="badge badge-secondary"><%= @count_themes %></span></a></li>
       <li class="nav-item"><a href="#" class="nav-link">評価したあるある</a></li>
     </ul>
-    <%= render 'themes/themes', themes: @themes %>
+    <%= render 'comments/comments', comments: @comments %>
+    </ul>
   </div>
 </div>

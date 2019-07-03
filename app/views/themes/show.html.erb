@@ -1,0 +1,57 @@
+
+<div class = "container">
+  <div class = "row">
+    <div class = " col-md-5">
+      <div class = "mb-4 border-bottom border-dark">
+        <h5>お題詳細ページ</h5>
+      </div>
+      <div class = "bg-dark d-flex align-items-center justify-content-center mb-4"style = "height: 250px">
+        <h3 class = "text-white"><%= @theme.content %></h3>
+      </div>
+      <% if logged_in? %>
+        <%= form_with(model: @comment, local: true) do |f| %>
+        
+          <% if @comment.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% @comment.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        
+         <%= hidden_field_tag :theme_id, @theme.id %>
+           <div class="form-group">
+             <%= f.text_area :content, class: 'form-control' %>
+           </div>
+         <%= f.submit 'このお題に投稿する', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      <% end %>  
+      
+      <div class = "text-center mb-5">
+        <%= link_to "ホームへ戻る", root_path %>
+      </div>
+    </div>
+    
+    <div class = "col-md-4 offset-md-1">
+      <div class = "mb-4 border-bottom border-dark">
+        <h5>あるある一覧</h5>
+      </div>
+        <% @comments.each do |com| %>
+          <% if com.id.present? %>
+          <div class = "bg-dark d-flex align-items-center justify-content-center mb-4"style = "height: 250px">
+            <h3 class = "text-white"><%= @theme.content %></h3>
+          </div>
+          <div class = "border-bottom border-dark pb-3 mb-5 h5 text-center">
+            <%= com.content %>
+          </div>
+          <% end %>
+        <% end %>
+        <%= paginate @comments %>
+    </div>
+  </div>
+</div>
+
+
+</div>

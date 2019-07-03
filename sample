@@ -1,0 +1,33 @@
+<h5 class = 'border-bottom mb-5'>新着お題</h5>
+<ul class="list-unstyled">
+  <% @comments.each do |comment| %>
+    <li class="media mb-3 pr-3">
+      <div class = "col-sm-3">
+      <div class="bg-dark">
+        <p class="text-white"><%= link_to comment.theme.content,  theme_url(comment.theme) %></p>
+      </div>
+      </div>
+      <div>
+        <p><%= comment.content %> </p>
+      </div>
+      
+    </li>
+  <% end %>
+  <%#= paginate @themes %>
+</ul>
+
+<h5 class = 'border-bottom mb-5'>新着お題</h5>
+<div class="container">
+  <div class="row">
+  <% @comments.each do |comment| %>
+      <div class = "col-3 mb-4">
+        <div class="d-block bg-dark d-flex align-items-center justify-content-center"style = "height: 140px">
+          <h5 class="text-white"><%= link_to comment.theme.content,  theme_url(comment.theme) %></h5>
+        </div>
+        <div class = "text-center">
+          <h5><%= comment.content %> </h5>
+        </div>
+      </div>
+  <% end %>
+ </div>
+</div> 
