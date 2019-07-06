@@ -9,7 +9,12 @@
         
         <div class = "text-center mb-5 mt-4">
           <h5><%= comment.content %> </h5>
-        </div> 
+        </div>
+        <div class = "text-right">
+          <%= render 'favorites/favorite_button', comment: comment %>
+        </div>
+        <div>
+        </div>  
       </div>
   <% end %>
  </div>

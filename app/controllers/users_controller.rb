@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show]
+  before_action :require_user_logged_in, only: [:show, :fav_comments]
   
   
   def index
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
    @user = User.find(params[:id])  
    @comments = current_user.comments.order(id: :desc).page(params[:page]).per(8)
+   counts(@user)
   end
 
   def new
@@ -26,6 +27,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def fav_comments
+    @user = User.find(params[:id])
+    @fav_comments = @user.fav_comments.page(params[:page])
+    counts(@user)
+  end
 end
 
 private

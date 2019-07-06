@@ -4,5 +4,7 @@ class Comment < ApplicationRecord
   
   belongs_to :user
   belongs_to :theme
+  has_many :favorites, dependent: :destroy
+  has_many :users, through: :favorites
 end
  

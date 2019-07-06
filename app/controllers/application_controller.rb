@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
   
   def counts(user)
-    @count_themes = user.themes.count
+    @count_comments = user.comments.count
+    @count_likes = user.fav_comments.count
   end
 end

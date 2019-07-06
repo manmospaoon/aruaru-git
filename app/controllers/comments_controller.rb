@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
     flash[:success] = '投稿を削除しました。'
     redirect_back(fallback_location: root_path)
   end
-
+  
   private
   
   def comment_params
@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
   def correct_user
     @comment = current_user.comments.find_by(id: params[:id])
     unless @comment
-    redirect_to root_url
+      redirect_to root_url
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_085726) do
+ActiveRecord::Schema.define(version: 2019_07_03_125544) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_05_23_085726) do
     t.datetime "updated_at", null: false
     t.index ["theme_id"], name: "index_comments_on_theme_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_favorites_on_comment_id"
+    t.index ["user_id", "comment_id"], name: "index_favorites_on_user_id_and_comment_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,5 +75,7 @@ ActiveRecord::Schema.define(version: 2019_05_23_085726) do
 
   add_foreign_key "comments", "themes"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "comments"
+  add_foreign_key "favorites", "users"
   add_foreign_key "themes", "users"
 end
