@@ -2,6 +2,10 @@ class ThemesController < ApplicationController
   before_action :require_user_logged_in, only:[:new, :create, :destroy]
   before_action :correct_user, only: [:destroy]
   
+  def index
+    @themes = Theme.order(id: :desc).page(params[:page]).per(12)
+  end
+  
   def show
     @theme = Theme.find(params[:id])
     @comments = @theme.comments.order(id: :desc).page(params[:page]).per(4)

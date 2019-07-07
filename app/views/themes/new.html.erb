@@ -1,8 +1,9 @@
 <div class="col-md-6 offset-md-3">
   <%= form_with(model: @theme, local: true) do |f| %>
     <div class="form-group">
-      <%= f.text_area :content, class: 'form-control', placeholder: "あるある", rows: 2 %>
+      <%= f.text_area :content, class: 'form-control', placeholder: "○○あるある", rows: 2 %>
     </div>
+    <p>※文末に、「あるある」を付けるとコメントしやすいです。<br>例：野球部あるある</p>
     <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>

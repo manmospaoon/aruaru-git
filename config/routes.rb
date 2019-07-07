@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :fav_comments
     end
   end
-  resources :themes, only: [:show, :new, :create , :destroy]
+  resources :themes, only: [:index, :show, :new, :create , :destroy]
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :favorites, only: [:create, :destroy]
 end

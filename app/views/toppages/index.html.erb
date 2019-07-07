@@ -1,9 +1,9 @@
 <h5 class = 'border-bottom mb-5'>新着あるある</h5>
 <div id="new-aruaru">
   <div class="row ml-3">
-  <% @comments.each do |comment| %>
-
+    <% @comments.each do |comment| %>
       <div class = "col-md-5 m-4">
+        <h5>投稿者：<%= comment.user.name %></h5>
         <h4><a class="d-block bg-dark d-flex align-items-center justify-content-center"style = "height: 250px"
           <%= link_to comment.theme.content,  theme_url(comment.theme) %></h4>
         
@@ -13,11 +13,9 @@
         <div class = "text-right">
           <%= render 'favorites/favorite_button', comment: comment %>
         </div>
-        <div>
-        </div>  
       </div>
-  <% end %>
- </div>
+    <% end %>
+  </div>
   <%= paginate @comments %>
 </div> 
 
