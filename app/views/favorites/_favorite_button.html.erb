@@ -1,13 +1,13 @@
 <% if current_user.like?(comment) %>
   <%= form_with(model: current_user.favorites.find_by(comment_id: comment.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :comment_id, comment.id %>
-    <%= button_tag 'いいね！ <i class="fas fa-heart"></i>'.html_safe, :type => "submit", :class =>"btn btn-danger btn-sm active" %>
+    <%= button_tag '<i class="fas fa-heart"></i>'.html_safe, :type => "submit", :class =>"btn btn-danger btn-sm active" %>
     <%= comment.favorites.count %>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
     <%= hidden_field_tag :comment_id, comment.id %>
-    <%= button_tag 'いいね！ <i class="far fa-heart"></i>'.html_safe, :type => "submit", :class =>"btn btn-info btn-sm" %>
+    <%= button_tag 'あるある！ <i class="far fa-heart"></i>'.html_safe, :type => "submit", :class =>"btn btn-info btn-sm" %>
     <%= comment.favorites.count %>
   <% end %>
 <% end %>
