@@ -5,8 +5,8 @@
         <a class="d-block bg-dark d-flex align-items-center justify-content-center"style = "height: 200px"
           <%= link_to comment.theme.content,  theme_url(comment.theme) %>
         
-        <div class = "text-center mb-4 mt-4">
-          <h6><%= comment.content %></h6>
+        <div class = "h6 text-center mb-4 mt-4">
+          <%= comment.content %>
         </div>
         <% if current_user == comment.user %>
           <div class = "text-right mb-5 mt-4">
