@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create] do
     member do
       get :fav_comments
+      get :created_themes
     end
   end
-  resources :themes, only: [:index, :show, :new, :create , :destroy]
+  resources :themes, only: [:index, :show, :new, :create , :edit, :update, :destroy]
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :favorites, only: [:create, :destroy]
 end

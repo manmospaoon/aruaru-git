@@ -7,11 +7,14 @@
         <h4><a class="d-block bg-dark d-flex align-items-center justify-content-center"style = "height: 250px"
           <%= link_to comment.theme.content,  theme_url(comment.theme) %></h4>
         
-        <div class = "text-center mb-5 mt-4">
+        <div class = "text-center mb-4 mt-4">
           <h5><%= comment.content %> </h5>
         </div>
         <div class = "text-right">
-          <%= render 'favorites/favorite_button', comment: comment %>
+          <% if logged_in? %>
+            <%= render 'favorites/favorite_button', comment: comment %>
+          <% end %>  
+          <p><%= comment.theme.created_at.strftime('%Y/%m/%d') %> コメント数：<%= comment.theme.comments.count %></p>
         </div>
       </div>
     <% end %>

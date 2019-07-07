@@ -1,0 +1,24 @@
+<% if logged_in? %>
+  <div class = "border-bottom mb-5">
+    <h4>お題編集</h4>
+  </div>
+  <%= form_with(model: @theme, local: true) do |f| %>
+        
+    <% if @theme.errors.any? %>
+     <div id="error_explanation">
+       <ul>
+         <% @theme.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form-group col-md-8">
+      <%= f.text_area :content, class: 'form-control' %>
+    </div>
+    
+    <%= f.submit '編集する', class: 'btn btn-primary btn-block col-md-8' %>
+  <% end %>
+  
+ <% end %>  

@@ -15,8 +15,10 @@
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿したあるある <span class="badge badge-secondary"><%= @count_comments %></span></a></li>
       <li class="nav-item"><a href="<%= fav_comments_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(fav_comments_user_path(@user)) %>">いいね！したあるある <span class="badge badge-secondary"><%= @count_likes %></a></li>
+      <li class="nav-item"><a href="<%= created_themes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(created_themes_user_path(@user)) %>">投稿したお題 <span class="badge badge-secondary"><%= @count_themes %></span></a></li>
     </ul>
     <%= render 'comments/comments', comments: @comments %>
+    
     </ul>
   </div>
 </div>

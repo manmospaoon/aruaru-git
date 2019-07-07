@@ -11,7 +11,7 @@
         <% if current_user == comment.user %>
           <div class = "text-right mb-5 mt-4">
            <%= link_to "編集", edit_comment_path(comment),  class: 'btn btn-success btn-sm' %> 
-           <%= link_to "削除", comment, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm mr-4' %>
+           <%= link_to "削除", comment, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: 'btn btn-danger btn-sm mr-4' %>
            <div class="d-inline-block">
              <%= render 'favorites/favorite_button', comment: comment %>
            </div>

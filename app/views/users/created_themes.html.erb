@@ -17,8 +17,23 @@
       <li class="nav-item"><a href="<%= fav_comments_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(fav_comments_user_path(@user)) %>">いいね！したあるある <span class="badge badge-secondary"><%= @count_likes %></a></li>
       <li class="nav-item"><a href="<%= created_themes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(created_themes_user_path(@user)) %>">投稿したお題 <span class="badge badge-secondary"><%= @count_themes %></span></a></li>
     </ul>
-    <%= render 'comments/comments', comments: @fav_comments %>
+      <div id="new-aruaru">
+        <div class="row">  
+          <% @created_themes.each do |theme| %>
+            <div class = "col-md-5 col-sm-6 offset-md-1">
+              <a class="d-block bg-dark d-flex align-items-center justify-content-center"style = "height: 200px"
+                <%= link_to theme.content,  theme_url(theme) %>
+                
+                <div class = "text-right mb-5 mt-4">
+                 <%= link_to "編集", edit_theme_path(theme),  class: 'btn btn-success btn-sm' %> 
+                 <%= link_to "削除", theme, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: 'btn btn-danger btn-sm' %>
+                 <p><%= theme.created_at.strftime('%Y/%m/%d') %> コメント数：<%= theme.comments.count %></p>
+                </div>
+            </div>
+          <% end %>
+        </div>
+        <%= paginate @created_themes%>
+      </div> 
     </ul>
   </div>
-  <%= paginate @fav_comments %>
 </div>

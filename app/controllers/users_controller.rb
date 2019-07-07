@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
    @user = User.find(params[:id])  
-   @comments = current_user.comments.order(id: :desc).page(params[:page]).per(8)
+   @comments = current_user.comments.order(id: :desc).page(params[:page]).per(6)
    counts(@user)
   end
 
@@ -29,7 +29,13 @@ class UsersController < ApplicationController
   
   def fav_comments
     @user = User.find(params[:id])
-    @fav_comments = @user.fav_comments.page(params[:page])
+    @fav_comments = @user.fav_comments.page(params[:page]).per(6)
+    counts(@user)
+  end
+  
+  def created_themes
+    @user = User.find(params[:id])
+    @created_themes = @user.themes.page(params[:page]).per(6)
     counts(@user)
   end
 end

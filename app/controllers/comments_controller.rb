@@ -9,12 +9,12 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'あるあるを投稿しました。'
-      redirect_back(fallback_location: root_path)
+      redirect_to "/themes/#{@comment.theme.id}"
     else
       @theme = Theme.find(params[:theme_id])
       @comments = @theme.comments.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'あるあるの投稿に失敗しました。'
-      render('themes/show')
+      render 'themes/show'
     end
   end
   
