@@ -5,6 +5,6 @@ ja:
       theme: お題
     attributes:
       comment:
-        content: このコメント
+        content: コメント
       theme:
-       content: このお題 
+       content: お題 
