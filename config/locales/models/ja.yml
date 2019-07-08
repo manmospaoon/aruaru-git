@@ -1,10 +1,10 @@
 ja:
   activerecord:
     models:
-      comment: コメント
+      comment: あるある
       theme: お題
     attributes:
       comment:
-        content: コメント
+        content: あるある
       theme:
        content: お題 
