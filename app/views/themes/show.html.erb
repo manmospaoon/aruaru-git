@@ -42,15 +42,12 @@
       </div>
         <% @comments.each do |com| %>
           <div class = "border-bottom border-dark pb-3 mb-5">
-            <div class = "mt-4 text-right">
-              <h5>投稿者：<%= com.user.name %>&emsp;&emsp;<%= @theme.created_at.strftime('%Y/%m/%d') %> コメント数：<%= @theme.comments.count %></h5>
-            </div>
             <% if com.id.present? %>
-              <div class = "bg-dark d-flex align-items-center justify-content-center mb-4"style = "height: 250px">
-                <h3 class = "text-white"><%= @theme.content %></h3>
-              </div>
-              <div class = "h6 text-center">
+              <div class = "h6 lead text-center">
                 <%= com.content %>
+              </div>
+              <div class = "mt-4 text-right">
+                <p>投稿者：<%= com.user.name %>&emsp;&emsp;<%= @theme.created_at.strftime('%Y/%m/%d') %></p>
               </div>
               <% if logged_in? %>
                 <div class = "text-right">
