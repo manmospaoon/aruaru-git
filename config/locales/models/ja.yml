@@ -2,7 +2,9 @@ ja:
   activerecord:
     models:
       comment: コメント
+      theme: お題
     attributes:
       comment:
-        content: 本文
-      
+        content: このコメント
+      theme:
+       content: このお題 
